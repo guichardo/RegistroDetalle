@@ -20,7 +20,7 @@ namespace RegistroDetalles.UI.Registro
             LlenarComboBox();
         }
 
-        private void Buscarbutton_Click(object sender, EventArgs e)
+        private void Buscarbutton_Click_1(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(IdnumericUpDown.Value);
             Grupos grupos = RegistroDetalle.BLL.GruposBLL.Buscar(id);
@@ -34,17 +34,17 @@ namespace RegistroDetalles.UI.Registro
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void NuevoButton_Click(object sender, EventArgs e)
+        private void NuevoButton_Click_1(object sender, EventArgs e)
         {
             IdnumericUpDown.Value = 0;
             NombretextBox.Clear();
             fechaDateTimePicker.Value = DateTime.Now;
-            comentariosTextBox.Clear();
+            CargotextBox.Clear();
 
             detalleDataGridView.DataSource = null;
             MyerrorProvider.Clear();
         }
-        private void Guardarbutton_Click(object sender, EventArgs e)
+        private void Guardarbutton_Click_1(object sender, EventArgs e)
         {
             Grupos grupo;
             bool Paso = false;
@@ -77,7 +77,7 @@ namespace RegistroDetalles.UI.Registro
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void Eliminarbutton_Click(object sender, EventArgs e)
+        private void Eliminarbutton_Click_1(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(IdnumericUpDown.Value);
 
@@ -88,7 +88,74 @@ namespace RegistroDetalles.UI.Registro
                 MessageBox.Show("No se pudo eliminar!!", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void Agregarbutton_Click(object sender, EventArgs e)
+
+        private void LlenarComboBox()
+        {
+            Repositorio<Personas> repositorio = new Repositorio<Personas>(new Contexto());
+            PersonacomboBox.DataSource = repositorio.GetList(c => true);
+            PersonacomboBox.ValueMember = "PersonaId";
+            PersonacomboBox.DisplayMember = "Nombres";
+        }
+
+        private Grupos LlenaClase()
+        {
+            Grupos grupo = new Grupos();
+
+            grupo.GrupoId = Convert.ToInt32(IdnumericUpDown.Value);
+            grupo.Fecha = fechaDateTimePicker.Value;
+
+            //Agregar cada linea del Grid al detalle
+            foreach (DataGridViewRow item in detalleDataGridView.Rows)
+            {
+                grupo.AgregarDetalle(
+                    ToInt(item.Cells["Id"].Value),
+                    ToInt(item.Cells["GrupoId"].Value),
+                    ToInt(item.Cells["PersonaId"].Value),
+                    item.Cells["Cargo"].ToString()
+                  );
+            }
+            return grupo;
+        }
+
+        private void LlenarCampos(Grupos grupo)
+        {
+            IdnumericUpDown.Value = grupo.GrupoId;
+            fechaDateTimePicker.Value = grupo.Fecha;
+            NombretextBox.Text = grupo.Descripcion;
+
+            //Cargar el detalle al Grid
+            detalleDataGridView.DataSource = grupo.Detalle;
+
+            //Ocultar columnas
+            detalleDataGridView.Columns["Id"].Visible = false;
+            detalleDataGridView.Columns["PersonaId"].Visible = false;
+        }
+
+
+        private bool HayErrores()
+        {
+            bool HayErrores = false;
+
+            if (detalleDataGridView.RowCount == 0)
+            {
+                MyerrorProvider.SetError(detalleDataGridView,
+                    "Es obligatorio seleccionar las personas");
+                HayErrores = true;
+            }
+
+            return HayErrores;
+        }
+
+        private int ToInt(object valor)
+        {
+            int retorno = 0;
+
+            int.TryParse(valor.ToString(), out retorno);
+
+            return retorno;
+        }
+
+        private void Agregarbutton_Click_1(object sender, EventArgs e)
         {
             List<GruposDetalle> detalle = new List<GruposDetalle>();
 
@@ -111,50 +178,7 @@ namespace RegistroDetalles.UI.Registro
             detalleDataGridView.DataSource = detalle;
         }
 
-        private void LlenarComboBox()
-        {
-            Repositorio<Personas> repositorio = new Repositorio<Personas>(new Contexto());
-            PersonacomboBox.DataSource = repositorio.GetList(c => true);
-            PersonacomboBox.ValueMember = "PersonaId";
-            PersonacomboBox.DisplayMember = "Nombres";
-        }
-
-        private Grupos LlenaClase()
-        {
-            Grupos grupo = new Grupos();
-
-            grupo.GrupoId = Convert.ToInt32(IdnumericUpDown.Value);
-            grupo.Fecha = fechaDateTimePicker.Value;
-            grupo.Comentarios = comentariosTextBox.Text;
-
-            //Agregar cada linea del Grid al detalle
-            foreach (DataGridViewRow item in detalleDataGridView.Rows)
-            {
-                Grupos.AgregarDetalle(
-                    ToInt(item.Cells["Id"].Value),
-                    ToInt(item.Cells["GrupoId"].Value),
-                    ToInt(item.Cells["PersonaId"].Value),
-                    (item.Cells["Cargo"].ToString())
-                  );
-            }
-            return grupo;
-        }
-
-        private void LlenarCampos(Grupos grupo)
-        {
-            IdnumericUpDown.Value = grupo.GrupoId;
-            fechaDateTimePicker.Value = grupo.Fecha;
-            NombretextBox.Text = grupo.Descripcion;
-            comentariosTextBox.Text = grupo.Comentarios;
-
-            //Cargar el detalle al Grid
-            detalleDataGridView.DataSource = grupo.Detalle;
-
-            //Ocultar columnas
-            detalleDataGridView.Columns["Id"].Visible = false;
-            detalleDataGridView.Columns["PersonaId"].Visible = false;
-        }
-        private void Removerbutton_Click(object sender, EventArgs e)
+        private void Removerbutton_Click_1(object sender, EventArgs e)
         {
             if (detalleDataGridView.Rows.Count > 0
                 && detalleDataGridView.CurrentRow != null)
@@ -170,42 +194,6 @@ namespace RegistroDetalles.UI.Registro
                 detalleDataGridView.DataSource = null;
                 detalleDataGridView.DataSource = detalle;
             }
-        }
-
-        private bool HayErrores()
-        {
-            bool HayErrores = false;
-
-            if (String.IsNullOrWhiteSpace(comentariosTextBox.Text))
-            {
-                MyerrorProvider.SetError(comentariosTextBox,
-                    "No debes dejar el Comentario vacio");
-                HayErrores = true;
-            }
-
-            if (detalleDataGridView.RowCount == 0)
-            {
-                MyerrorProvider.SetError(detalleDataGridView,
-                    "Es obligatorio seleccionar las personas");
-                HayErrores = true;
-            }
-
-            return HayErrores;
-        }
-
-        private int ToInt(object valor)
-        {
-            int retorno = 0;
-
-            int.TryParse(valor.ToString(), out retorno);
-
-            return retorno;
-        }
-
-
-        private void CiudadcomboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

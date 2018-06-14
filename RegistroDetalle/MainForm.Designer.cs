@@ -37,13 +37,13 @@
             this.registrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.visitasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.GruposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.visitasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.GruposToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripButton();
+            this.GrupotoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -54,7 +54,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.PersonastoolStripButton,
             this.toolStripSeparator1,
-            this.toolStripLabel1});
+            this.GrupotoolStripButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(504, 25);
@@ -67,6 +67,7 @@
             this.PersonastoolStripButton.Name = "PersonastoolStripButton";
             this.PersonastoolStripButton.Size = new System.Drawing.Size(58, 22);
             this.PersonastoolStripButton.Text = "Personas";
+            this.PersonastoolStripButton.Click += new System.EventHandler(this.PersonastoolStripButton_Click);
             // 
             // toolStripSeparator1
             // 
@@ -87,6 +88,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(504, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // archivoToolStripMenuItem
             // 
@@ -99,7 +101,7 @@
             this.registrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.personasToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.visitasToolStripMenuItem});
+            this.GruposToolStripMenuItem});
             this.registrosToolStripMenuItem.Name = "registrosToolStripMenuItem";
             this.registrosToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.registrosToolStripMenuItem.Text = "Registros";
@@ -107,26 +109,28 @@
             // personasToolStripMenuItem
             // 
             this.personasToolStripMenuItem.Name = "personasToolStripMenuItem";
-            this.personasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.personasToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.personasToolStripMenuItem.Text = "Personas";
+            this.personasToolStripMenuItem.Click += new System.EventHandler(this.personasToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(118, 6);
             // 
-            // visitasToolStripMenuItem
+            // GruposToolStripMenuItem
             // 
-            this.visitasToolStripMenuItem.Name = "visitasToolStripMenuItem";
-            this.visitasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.visitasToolStripMenuItem.Text = "Grupos";
+            this.GruposToolStripMenuItem.Name = "GruposToolStripMenuItem";
+            this.GruposToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.GruposToolStripMenuItem.Text = "Grupos";
+            this.GruposToolStripMenuItem.Click += new System.EventHandler(this.GruposToolStripMenuItem_Click);
             // 
             // consultasToolStripMenuItem
             // 
             this.consultasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.personasToolStripMenuItem1,
             this.toolStripMenuItem3,
-            this.visitasToolStripMenuItem1});
+            this.GruposToolStripMenuItem1});
             this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
             this.consultasToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.consultasToolStripMenuItem.Text = "Consultas";
@@ -134,19 +138,21 @@
             // personasToolStripMenuItem1
             // 
             this.personasToolStripMenuItem1.Name = "personasToolStripMenuItem1";
-            this.personasToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.personasToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
             this.personasToolStripMenuItem1.Text = "Personas";
+            this.personasToolStripMenuItem1.Click += new System.EventHandler(this.personasToolStripMenuItem1_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(118, 6);
             // 
-            // visitasToolStripMenuItem1
+            // GruposToolStripMenuItem1
             // 
-            this.visitasToolStripMenuItem1.Name = "visitasToolStripMenuItem1";
-            this.visitasToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.visitasToolStripMenuItem1.Text = "Grupos";
+            this.GruposToolStripMenuItem1.Name = "GruposToolStripMenuItem1";
+            this.GruposToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
+            this.GruposToolStripMenuItem1.Text = "Grupos";
+            this.GruposToolStripMenuItem1.Click += new System.EventHandler(this.GruposToolStripMenuItem1_Click);
             // 
             // ayudaToolStripMenuItem
             // 
@@ -154,14 +160,15 @@
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
             // 
-            // toolStripLabel1
+            // GrupotoolStripButton
             // 
-            this.toolStripLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripLabel1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripLabel1.Image")));
-            this.toolStripLabel1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(49, 22);
-            this.toolStripLabel1.Text = "Grupos";
+            this.GrupotoolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.GrupotoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("GrupotoolStripButton.Image")));
+            this.GrupotoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.GrupotoolStripButton.Name = "GrupotoolStripButton";
+            this.GrupotoolStripButton.Size = new System.Drawing.Size(49, 22);
+            this.GrupotoolStripButton.Text = "Grupos";
+            this.GrupotoolStripButton.Click += new System.EventHandler(this.GrupotoolStripButton_Click);
             // 
             // MainForm
             // 
@@ -174,6 +181,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -193,13 +201,13 @@
         private System.Windows.Forms.ToolStripMenuItem registrosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem personasToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem visitasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem GruposToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem personasToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem visitasToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem GruposToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton toolStripLabel1;
+        private System.Windows.Forms.ToolStripButton GrupotoolStripButton;
     }
 }
 

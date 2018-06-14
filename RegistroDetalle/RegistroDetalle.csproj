@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\GruposBLL.cs" />
+    <Compile Include="BLL\PersonasBLL.cs" />
     <Compile Include="DAL\Contexto.cs" />
     <Compile Include="DAL\IRepository.cs" />
     <Compile Include="DAL\Repositorio.cs" />
@@ -73,11 +74,23 @@
     <Compile Include="UI\Consulta\cGrupos.Designer.cs">
       <DependentUpon>cGrupos.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Consulta\cPersonas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Consulta\cPersonas.Designer.cs">
+      <DependentUpon>cPersonas.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Registro\rGrupos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Registro\rGrupos.Designer.cs">
       <DependentUpon>rGrupos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Registro\rPersonas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Registro\rPersonas.Designer.cs">
+      <DependentUpon>rPersonas.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -94,8 +107,14 @@
     <EmbeddedResource Include="UI\Consulta\cGrupos.resx">
       <DependentUpon>cGrupos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Consulta\cPersonas.resx">
+      <DependentUpon>cPersonas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Registro\rGrupos.resx">
       <DependentUpon>rGrupos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Registro\rPersonas.resx">
+      <DependentUpon>rPersonas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -111,9 +130,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="DAL\Scripts\GruposDb.sql" />
+    <Content Include="DAL\Scripts\Scripts.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

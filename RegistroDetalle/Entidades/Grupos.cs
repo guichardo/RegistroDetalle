@@ -18,9 +18,6 @@ namespace RegistroDetalle.Entidades
         public int Grupo { get; set; }
         public int Integrantes { get; set; }
 
-        [StringLength(100)]
-        public string Comentarios { get; set; }
-
         public virtual ICollection<GruposDetalle> Detalle { get; set; }
 
         public Grupos()
@@ -33,9 +30,9 @@ namespace RegistroDetalle.Entidades
         /// Este metodo permite agretar un item a la lista
         /// No es obligatorio, lo creo por comodidad
         /// </summary>
-        public void AgregarDetalle(int id, int gruposId, int personasId, string cargo)
+        public void AgregarDetalle(int id, int GruposId, int PersonaId, string Cargo)
         {
-            this.Detalle.Add(new GruposDetalle(id, gruposId, personasId, cargo));
+            this.Detalle.Add(new GruposDetalle(id, GruposId, PersonaId, Cargo));
         }
     }
 }

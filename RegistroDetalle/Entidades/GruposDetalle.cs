@@ -1,6 +1,7 @@
 ﻿using RegistroDetalle.Entidades;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,12 @@ namespace RegistroDetalle.Entidades
 {
     public class GruposDetalle
     {
+        [Key]
         public int Id { get; set; }
-        public int GruposId { get; set; }
-        public int PersonasId { get; set; }
+        public int GrupoId { get; set; }
+        public int PersonaId { get; set; }
 
-        [ForeignKey("PersonasId")]
+        [ForeignKey("PersonaId")]
         //Permite indicar por cual campo se usara
         //la NAVIGATION PROPERTY
         public virtual Personas Persona { get; set; }
@@ -23,7 +25,7 @@ namespace RegistroDetalle.Entidades
         public GruposDetalle()
         {
             this.Id = 0;
-            this.GruposId = 0;
+            this.GrupoId = 0;
         }
 
         /// <summary>
@@ -32,8 +34,8 @@ namespace RegistroDetalle.Entidades
         public GruposDetalle(int id, int grupoId, int personaId, string cargo)
         {
             this.Id = id;
-            this.GruposId = grupoId;
-            this.PersonasId = personaId;
+            this.GrupoId = grupoId;
+            this.PersonaId = personaId;
             this.Cargo = cargo;
         }
     }

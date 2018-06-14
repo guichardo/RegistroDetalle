@@ -1,6 +1,6 @@
 ﻿namespace RegistroDetalle.UI.Consulta
 {
-    partial class cGrupos
+    partial class cPersonas
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cGrupos));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cPersonas));
             this.label4 = new System.Windows.Forms.Label();
             this.Fechaspanel = new System.Windows.Forms.Panel();
             this.HastadateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -54,7 +54,7 @@
             this.label4.Location = new System.Drawing.Point(11, 62);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(155, 13);
-            this.label4.TabIndex = 32;
+            this.label4.TabIndex = 26;
             this.label4.Text = "Filtrar usando Rango de fechas";
             // 
             // Fechaspanel
@@ -64,11 +64,11 @@
             this.Fechaspanel.Controls.Add(this.label3);
             this.Fechaspanel.Controls.Add(this.DesdedateTimePicker);
             this.Fechaspanel.Controls.Add(this.label6);
-            this.Fechaspanel.Location = new System.Drawing.Point(164, 54);
+            this.Fechaspanel.Location = new System.Drawing.Point(164, 53);
             this.Fechaspanel.Margin = new System.Windows.Forms.Padding(2);
             this.Fechaspanel.Name = "Fechaspanel";
             this.Fechaspanel.Size = new System.Drawing.Size(391, 30);
-            this.Fechaspanel.TabIndex = 33;
+            this.Fechaspanel.TabIndex = 27;
             // 
             // HastadateTimePicker
             // 
@@ -116,7 +116,7 @@
             this.Imprimirbutton.Location = new System.Drawing.Point(10, 408);
             this.Imprimirbutton.Name = "Imprimirbutton";
             this.Imprimirbutton.Size = new System.Drawing.Size(105, 41);
-            this.Imprimirbutton.TabIndex = 31;
+            this.Imprimirbutton.TabIndex = 25;
             this.Imprimirbutton.Text = "Imprimir";
             this.Imprimirbutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Imprimirbutton.UseVisualStyleBackColor = true;
@@ -134,7 +134,7 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(545, 41);
-            this.groupBox1.TabIndex = 30;
+            this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             // 
             // CriteriotextBox
@@ -150,8 +150,11 @@
             // 
             this.filtrarcomboBox.FormattingEnabled = true;
             this.filtrarcomboBox.Items.AddRange(new object[] {
-            "ID",
-            "Cargo"});
+            "Id",
+            "Nombre",
+            "Cedula",
+            "Direccion",
+            "Telefono"});
             this.filtrarcomboBox.Location = new System.Drawing.Point(44, 13);
             this.filtrarcomboBox.Name = "filtrarcomboBox";
             this.filtrarcomboBox.Size = new System.Drawing.Size(121, 21);
@@ -183,7 +186,7 @@
             this.Buscarbutton.Location = new System.Drawing.Point(562, 11);
             this.Buscarbutton.Name = "Buscarbutton";
             this.Buscarbutton.Size = new System.Drawing.Size(105, 41);
-            this.Buscarbutton.TabIndex = 29;
+            this.Buscarbutton.TabIndex = 23;
             this.Buscarbutton.Text = "Buscar";
             this.Buscarbutton.UseVisualStyleBackColor = true;
             this.Buscarbutton.Click += new System.EventHandler(this.Buscarbutton_Click);
@@ -197,14 +200,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ConsultadataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ConsultadataGridView.Location = new System.Drawing.Point(10, 98);
+            this.ConsultadataGridView.Location = new System.Drawing.Point(10, 97);
             this.ConsultadataGridView.Name = "ConsultadataGridView";
             this.ConsultadataGridView.ReadOnly = true;
             this.ConsultadataGridView.RowHeadersWidth = 10;
             this.ConsultadataGridView.Size = new System.Drawing.Size(657, 304);
-            this.ConsultadataGridView.TabIndex = 28;
+            this.ConsultadataGridView.TabIndex = 22;
             // 
-            // cGrupos
+            // cPersonas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -215,9 +218,8 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Buscarbutton);
             this.Controls.Add(this.ConsultadataGridView);
-            this.Name = "cGrupos";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "cGrupos";
+            this.Name = "cPersonas";
+            this.Text = "cPersonas";
             this.Fechaspanel.ResumeLayout(false);
             this.Fechaspanel.PerformLayout();
             this.groupBox1.ResumeLayout(false);
